@@ -1,0 +1,97 @@
+@import "variables";
+@import "mixins";
+
+.container {
+  margin: 0 9rem;
+
+  .title {
+    margin: 5rem 0;
+    font-size: 5rem;
+
+    span {
+      color: var(--primary);
+    }
+  }
+
+  .workContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .work {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: $m_md;
+      row-gap: $m_sm;
+
+      .workItem {
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 0.8rem;
+          height: 2px;
+          background-color: var(--primary);
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%) scale(0);
+        }
+
+        &[data-current="true"] {
+          div {
+            color: black;
+            transform: translateX(1.2rem);
+            transition: transform 0.5s;
+          }
+
+          &::before {
+            transition: transform 0.5s;
+            transform-origin: left;
+            transform: translateY(-50%) scale(1);
+          }
+        }
+        div {
+          font-size: larger;
+          color: var(--text_idle);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .legendContainer {
+      div {
+        font-size: small;
+      }
+      .lgTitle {
+        font-weight: 600;
+      }
+
+      .legend {
+        @include center;
+        height: fit-content;
+        gap: $m_sm;
+        .seperator {
+          margin-top: $m_xs;
+          width: 1px;
+          align-self: stretch;
+          background-color: black;
+        }
+        .legendItems {
+          margin-top: $m_xs;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: $m_sm;
+          .lgItem {
+            display: flex;
+            align-items: center;
+            gap: $m_xs;
+            img {
+              width: $icon_width;
+            }
+          }
+        }
+      }
+    }
+  }
+}
