@@ -1,3 +1,19 @@
-.productImg {
-  width: 50%;
+@import "variables";
+@import "mixins";
+
+.container {
+  .productImg {
+    width: 100%;
+  }
+
+  .imgPosContainer {
+    @include center();
+    gap: $m_sm;
+
+    .imgPos {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+    }
+  }
 }

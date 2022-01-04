@@ -14,6 +14,7 @@ colors
   --primary: rgb(213, 51, 62);
   --text_idle: rgb(162, 164, 165);
   --footer: rgb(250, 250, 250);
+  --product: rgb(98, 194, 188);
 }
 
 @font-face {

@@ -11,8 +11,20 @@ export default function Product() {
       } else {
         setCurrentIndex(0)
       }
-    }, 1000)
+    }, 2500)
     return () => clearInterval(interval)
   })
-  return <img className={styles.productImg} src={productImgs[currentIndex]} alt="" />
+  return (
+    <div className={styles.container}>
+      <img className={styles.productImg} src={productImgs[currentIndex]} alt="" />
+      <div className={styles.imgPosContainer}>
+        {productImgs.map((_: string, index: number) => (
+          <div
+            style={{ backgroundColor: currentIndex === index ? "red" : "rgb(162, 164, 165)" }}
+            key={`imgPos_${index}`}
+            className={styles.imgPos}></div>
+        ))}
+      </div>
+    </div>
+  )
 }

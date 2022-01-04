@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import styles from "../styles/Details.module.scss"
 import Footer from "./footer"
 import Navigation from "./navigation"
@@ -10,6 +10,9 @@ export default function Details({
 }: {
   redirect: React.Dispatch<React.SetStateAction<boolean>>
 }) {
+  const productRef = useRef(null)
+  const backgroundRef = useRef(null)
+
   useEffect(() => {
     gsap.fromTo(
       ".detailItem",
@@ -20,6 +23,20 @@ export default function Details({
         duration: 1,
         stagger: 0.3,
       },
+    )
+    gsap.fromTo(
+      backgroundRef.current,
+      { scale: 0 },
+      {
+        scale: 1,
+        duration: 1,
+      },
+    )
+
+    gsap.fromTo(
+      productRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1, repeat: -1, repeatDelay: 3.5, ease: "linear", delay: 1.2 },
     )
   })
 
@@ -70,7 +87,12 @@ export default function Details({
         </div>
 
         <div className={styles.product}>
-          <Product />
+          <div className={styles.productContainer}>
+            <div ref={backgroundRef} className={styles.productBackground}></div>
+            <div ref={productRef}>
+              <Product />
+            </div>
+          </div>
         </div>
 
         <div className={styles.rightSlide}>
