@@ -1,0 +1,105 @@
+@import "variables";
+@import "mixins";
+
+.container {
+  @include center();
+  position: relative;
+
+  .leftSlide,
+  .rightSlide {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: $icon_width;
+    }
+  }
+
+  .leftSlide {
+    left: -2.5rem;
+    img {
+      margin-left: 3rem;
+    }
+  }
+
+  .rightSlide {
+    right: -2.5rem;
+    img {
+      margin-left: 1rem;
+    }
+  }
+
+  .details {
+    width: 50%;
+    margin: $m_xxl 0;
+    margin-left: 5rem;
+
+    .productName {
+      font-size: 4.5rem;
+      font-weight: 600;
+      letter-spacing: 0.3rem;
+    }
+
+    .stores {
+      margin: $m_lg 0;
+      display: flex;
+      .store {
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        img {
+          margin: 0 1.5rem;
+          margin-top: $m_xxs;
+        }
+        .storeName {
+          padding: 0.4rem 1.5rem;
+          font-size: small;
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+      .appStore {
+        border-right: none;
+      }
+    }
+
+    .descriptions {
+      letter-spacing: 0.05rem;
+      margin-bottom: $m_md;
+    }
+
+    .featureContainer {
+      display: flex;
+
+      .title {
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+      }
+
+      .seperator {
+        width: 1px;
+        align-self: stretch;
+        background-color: rgba(0, 0, 0, 0.3);
+        margin: 0 $m_md;
+      }
+
+      .features {
+        div {
+          letter-spacing: 0.05rem;
+          margin-bottom: $m_sm;
+        }
+        div:nth-of-type(4) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .product {
+    width: 50%;
+  }
+}

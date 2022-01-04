@@ -21,6 +21,14 @@ export enum eIcon {
   WEB = "./icons/ico-web.svg",
 }
 
+export interface iWork {
+  mainTitle: eCategory
+  title: string
+  image: string
+  icons: eIcon[]
+  ocupation: number
+}
+
 const work = {
   1: {
     mainTitle: eCategory.BF,
@@ -88,7 +96,7 @@ const work = {
   10: {
     mainTitle: eCategory.OT,
     title: "FWD Insurance",
-    image: `./images/fFWD-0@2x.jpg`,
+    image: `./images/FWD-0@2x.jpg`,
     icons: [eIcon.APP, eIcon.CMS, eIcon["UI/UX"]],
     ocupation: 2,
   },
@@ -219,7 +227,7 @@ const work = {
 
 export const AL = {
   title: eCategory.AL,
-  work: [Object.values(work)],
+  work: Object.values(work),
 }
 export const TL = {
   title: eCategory.TL,

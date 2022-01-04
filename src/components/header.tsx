@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
 import { eIcon, eCategory } from "../data/work.data"
-import { CategoryState, changeCategory } from "../redux/category.slice"
+import { changeCategory, iCategoryState } from "../redux/category.slice"
 import { AppDispatch } from "../redux/store"
 import styles from "../styles/Header.module.scss"
 
 export default function Header() {
-  const currentWork = useSelector((state: CategoryState) => {
-    return state.category.key
-  })
+  const currentWork = useSelector((state: iCategoryState) => state.category.key)
   const dispatch = useDispatch<AppDispatch>()
 
   return (

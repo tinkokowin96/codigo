@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { AL, BF, CI, eCategory, FB, HC, LS, OT, RE, SU, TC, TL } from "../data/work.data"
 
-export interface CategoryState {
-  category: InitialState
+export interface iCategoryState {
+  category: iInitialState
 }
 
-export interface InitialState {
+export interface iInitialState {
   category: eCategory
   data: any
   key: string
 }
 
-const initialState: InitialState = {
+const initialState: iInitialState = {
   category: eCategory.AL,
   data: AL,
   key: "AL",
