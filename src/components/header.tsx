@@ -1,9 +1,15 @@
-import { useState } from "react"
-import { eIcon, eWork } from "../data/work.data"
+import { useDispatch, useSelector } from "react-redux"
+import { eIcon, eCategory } from "../data/work.data"
+import { CategoryState, changeCategory } from "../redux/category.slice"
+import { AppDispatch } from "../redux/store"
 import styles from "../styles/Header.module.scss"
 
 export default function Header() {
-  const [currentWork, setCurrentWork] = useState("ALL")
+  const currentWork = useSelector((state: CategoryState) => {
+    return state.category.key
+  })
+  const dispatch = useDispatch<AppDispatch>()
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>
@@ -14,14 +20,17 @@ export default function Header() {
 
       <div className={styles.workContainer}>
         <div className={styles.work}>
-          {Object.values(eWork).map((work: string, index: number) => (
-            <div
-              className={styles.workItem}
-              data-current={currentWork === work && "true"}
-              onClick={() => setCurrentWork(work)}>
-              <div key={`work_${index}`}>{work}</div>
-            </div>
-          ))}
+          {Object.entries(eCategory).map(([category, work], index: number) => {
+            return (
+              <div
+                className={styles.workItem}
+                key={`category_${index}`}
+                data-current={currentWork === category && "true"}
+                onClick={() => dispatch(changeCategory(category))}>
+                <div>{work}</div>
+              </div>
+            )
+          })}
         </div>
         <div className={styles.legendContainer}>
           <div className={styles.lgTitle}>LEGEND</div>

@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
-import { workreducer } from "./work/work.reducer";
+import { combineReducers } from "@reduxjs/toolkit"
+import categoryReducer from "./category.slice"
 
 export const rootReducer = combineReducers({
-  work: workreducer,
-});
+  category: categoryReducer,
+})
