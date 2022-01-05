@@ -49,18 +49,25 @@ export default function Navigation({ redirect, showFeatures, menu = null }: iNav
 
   const menuCloseHandler = () => {
     const isPhone = window.innerWidth > 500 ? false : true
-    gsap.set(containerRef.current, {
-      margin: isPhone ? "1.3rem" : "2rem 3.12rem",
-    })
+
     gsap.to(menuRef.current, {
+      position: "absolute",
+      clipPath: "circle(10% at 100% 0)",
+      duration: 0.5,
+    })
+
+    gsap.set(menuRef.current, {
+      clipPath: "none",
       position: "relative",
       width: "3rem",
       height: "3rem",
       borderRadius: "50%",
-      transformOrigin: "top right",
-      duration: 0.7,
+      delay: 0.5,
       ease: "linear",
       onComplete: () => {
+        gsap.set(containerRef.current, {
+          margin: isPhone ? "1.3rem" : "2rem 3.12rem",
+        })
         menu?.set(false)
       },
     })
