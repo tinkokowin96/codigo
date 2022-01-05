@@ -6,9 +6,6 @@
   margin: $m_md $m_lg;
   justify-content: space-between;
   position: relative;
-  &[data-open="true"] {
-    margin: 0;
-  }
 
   .logo {
     width: $logo_width;
@@ -45,22 +42,16 @@
     border-radius: 50%;
     @include center();
     transform-origin: top right;
-    // transition: all 1s ease;
-
+    z-index: 5;
     cursor: pointer;
     display: none;
 
     &[data-open="true"] {
-      width: 100vw;
-      height: 100vh;
       position: absolute;
       border-radius: 0;
-      clip-path: circle(120% at 100% 0);
       top: 0;
       left: 0;
-      z-index: 5;
-      // transform-origin: top left;
-      // transition: all 1s ease;
+      transition: all 1s ease;
 
       .hamburger {
         position: absolute;

@@ -1,3 +1,4 @@
+import gsap from "gsap"
 import { useRef } from "react"
 import styles from "../styles/Navigation.module.scss"
 
@@ -12,17 +13,63 @@ interface iNavigation {
 
 export default function Navigation({ redirect, showFeatures, menu = null }: iNavigation) {
   const menuRef = useRef(null)
+  const containerRef = useRef(null)
 
   const clickMenuHandler = () => {
     if (menu && !menu.open) {
-      menu.set(true)
+      menuOpenHandler()
     } else if (menu && menu.open) {
-      menu.set(false)
+      menuCloseHandler()
     }
   }
 
+  const menuOpenHandler = () => {
+    gsap.set(containerRef.current, {
+      margin: 0,
+    })
+
+    gsap.set(menuRef.current, {
+      borderRadius: 0,
+      position: "absolute",
+      top: 0,
+      right: 0,
+      width: "100vw",
+      height: "100vh",
+      clipPath: "circle(10% at 100% 0)",
+    })
+
+    gsap.to(menuRef.current, {
+      clipPath: "circle(120% at 100% 0)",
+      duration: 0.7,
+      onComplete: () => {
+        menu?.set(true)
+      },
+    })
+  }
+
+  const menuCloseHandler = () => {
+    gsap.set(containerRef.current, {
+      margin: "2rem 3.12rem",
+    })
+    gsap.to(menuRef.current, {
+      position: "relative",
+      width: "3rem",
+      height: "3rem",
+      borderRadius: "50%",
+      transformOrigin: "top right",
+      duration: 0.7,
+      ease: "linear",
+      onComplete: () => {
+        menu?.set(false)
+      },
+    })
+  }
+
   return (
-    <div className={styles.container} data-open={menu && menu.open && "true"}>
+    <div
+      className={styles.container}
+      ref={containerRef}
+      data-open={menu && menu.open && "true"}>
       {showFeatures && <img className={styles.logo} src="./icons/logo.svg" alt="" />}
       {!showFeatures && redirect && (
         <div className={styles.backWork} onClick={() => redirect(false)}>
