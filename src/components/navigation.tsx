@@ -48,8 +48,9 @@ export default function Navigation({ redirect, showFeatures, menu = null }: iNav
   }
 
   const menuCloseHandler = () => {
+    const isPhone = window.innerWidth > 500 ? false : true
     gsap.set(containerRef.current, {
-      margin: "2rem 3.12rem",
+      margin: isPhone ? "1.3rem" : "2rem 3.12rem",
     })
     gsap.to(menuRef.current, {
       position: "relative",

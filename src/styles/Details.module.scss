@@ -1,9 +1,28 @@
 @import "variables";
 @import "mixins";
 
+.productName {
+  font-family: "Source Sans Pro";
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  margin-left: $m_xl;
+  margin-top: $m_xxl;
+
+  @include breakpoint(s-max) {
+    margin-top: $m_xl;
+    margin-left: $m_md;
+    font-size: 3.3rem;
+  }
+}
+
 .container {
   @include center();
   position: relative;
+
+  @include breakpoint(m-max) {
+    flex-direction: column-reverse;
+  }
 
   .leftSlide,
   .rightSlide {
@@ -14,6 +33,11 @@
     border-radius: 50%;
     display: flex;
     align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+
+    @include breakpoint(s-max) {
+      bottom: $m_lg;
+    }
 
     img {
       width: $icon_width;
@@ -25,6 +49,13 @@
     img {
       margin-left: 3rem;
     }
+    @include breakpoint(s-max) {
+      left: $m_md;
+      @include center();
+      img {
+        margin: 0;
+      }
+    }
   }
 
   .rightSlide {
@@ -32,23 +63,28 @@
     img {
       margin-left: 1rem;
     }
+    @include breakpoint(s-max) {
+      right: $m_md;
+      @include center();
+      img {
+        margin: 0;
+      }
+    }
   }
 
   .details {
     width: 40%;
-    margin: $m_xxl 0;
-    margin-left: 5rem;
-
-    .productName {
-      font-family: "Source Sans Pro";
-      font-size: 4.5rem;
-      font-weight: 700;
-      letter-spacing: 0.1rem;
+    margin: $m_lg 0;
+    margin-left: $m_xl;
+    @include breakpoint(s-max) {
+      width: 100%;
+      margin-left: $m_md;
     }
 
     .stores {
       margin: $m_lg 0;
       display: flex;
+
       .store {
         border: 1px solid rgba(0, 0, 0, 0.3);
         img {
@@ -76,9 +112,18 @@
     .featureContainer {
       display: flex;
 
+      @include breakpoint(s-max) {
+        flex-direction: column;
+        margin-bottom: $m_xxl;
+      }
+
       .title {
         font-weight: 600;
         letter-spacing: 0.1rem;
+
+        @include breakpoint(s-max) {
+          margin-bottom: $m_sm;
+        }
       }
 
       .seperator {
@@ -92,6 +137,10 @@
         div {
           letter-spacing: 0.05rem;
           margin-bottom: $m_sm;
+
+          @include breakpoint(s-max) {
+            margin-bottom: $m_xs;
+          }
         }
         div:nth-of-type(4) {
           margin-bottom: 0;
@@ -102,6 +151,11 @@
 
   .product {
     width: 60%;
+
+    @include breakpoint(s-max) {
+      width: 100%;
+      margin-top: $m_md;
+    }
 
     .productContainer {
       width: 100%;

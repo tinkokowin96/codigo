@@ -4,9 +4,19 @@
 .container {
   margin: 0 $m_xxl;
 
+  @include breakpoint(s-max) {
+    margin: $m_md;
+  }
+
   .title {
     margin: 5rem 0;
     font-size: 5rem;
+
+    @include breakpoint(s-max) {
+      margin: $m_sm 0;
+      margin-top: $m_xxl;
+      font-size: 3rem;
+    }
 
     span {
       color: var(--primary);
@@ -17,6 +27,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    @include breakpoint(s-max) {
+      display: none;
+    }
 
     .work {
       display: grid;

@@ -7,8 +7,13 @@ import Product from "./product"
 
 export default function Details({
   redirect,
+  menu,
 }: {
   redirect: React.Dispatch<React.SetStateAction<boolean>>
+  menu: {
+    open: boolean
+    set: React.Dispatch<React.SetStateAction<boolean>>
+  }
 }) {
   const productRef = useRef(null)
   const backgroundRef = useRef(null)
@@ -42,17 +47,18 @@ export default function Details({
 
   return (
     <>
-      <Navigation redirect={redirect} showFeatures={false} />
+      <Navigation redirect={redirect} showFeatures={false} menu={menu} />
+
+      <div className={`detailItem ${styles.productName}`}>
+        OCBC Pay <br />
+        Anyone
+      </div>
       <div className={styles.container}>
         <div className={styles.leftSlide}>
           <img src="./icons/arrow-left-white.svg" alt="" />
         </div>
 
         <div className={styles.details}>
-          <div className={`detailItem ${styles.productName}`}>
-            OCBC Pay <br />
-            Anyone
-          </div>
           <div className={`detailItem ${styles.stores}`}>
             <div className={`${styles.appStore} ${styles.store}`}>
               <img src="./images/ico-app_store.png" alt="" />
