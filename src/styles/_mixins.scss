@@ -1,3 +1,35 @@
+@mixin breakpoint($size) {
+  @if $size == s-min {
+    @media (min-width: 767px) {
+      @content;
+    }
+  } @else if $size == s-max {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $size == m-min {
+    @media (min-width: 976px) {
+      @content;
+    }
+  } @else if $size == m-max {
+    @media (max-width: 977px) {
+      @content;
+    }
+  } @else if $size == l-min {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $size == l-max {
+    @media (max-width: 1201px) {
+      @content;
+    }
+  } @else if $size == xl-min {
+    @media (min-width: 1600px) {
+      @content;
+    }
+  }
+}
+
 @mixin center() {
   display: flex;
   justify-content: center;

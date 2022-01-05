@@ -1,0 +1,10 @@
+@import "variables";
+@import "mixins";
+
+.App {
+  position: relative;
+  &[data-open="true"] {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
