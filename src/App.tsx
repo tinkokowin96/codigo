@@ -9,11 +9,15 @@ function App() {
   const [redirect, setRedirect] = useState(false)
   const [openMenu, setOpenMenu] = useState(false)
   if (redirect) {
-    return <Details redirect={setRedirect} menu={{ open: openMenu, set: setOpenMenu }} />
+    return (
+      <div style={{ overflowX: "hidden" }}>
+        <Details redirect={setRedirect} menu={{ open: openMenu, set: setOpenMenu }} />
+      </div>
+    )
   }
 
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <Navigation redirect={null} showFeatures menu={{ open: openMenu, set: setOpenMenu }} />
       <Header />
       <Work redirect={setRedirect} />

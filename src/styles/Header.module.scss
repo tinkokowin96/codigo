@@ -8,6 +8,10 @@
     margin: $m_md;
   }
 
+  @include breakpoint(m-max) {
+    margin: $m_lg;
+  }
+
   .title {
     margin: 5rem 0;
     font-size: 5rem;
@@ -30,6 +34,12 @@
 
     @include breakpoint(s-max) {
       display: none;
+    }
+
+    @include breakpoint(m-max) {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: $m_lg;
     }
 
     .work {
@@ -85,6 +95,7 @@
         @include center;
         height: fit-content;
         gap: $m_sm;
+
         .seperator {
           margin-top: $m_xs;
           width: 1px;

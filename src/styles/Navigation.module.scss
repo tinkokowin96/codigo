@@ -1,61 +1,99 @@
 @import "variables";
 @import "mixins";
 
-.container {
-  display: flex;
-  margin: $m_md;
-  min-height: 3rem;
-  justify-content: space-between;
-  @include breakpoint(m-max) {
-    margin: $m_sm;
-  }
-
-  .logo {
-    width: $logo_width;
-
-    @include breakpoint(m-max) {
-      width: 7rem;
-    }
-  }
-
-  .backWork {
-    @include center();
-    cursor: pointer;
-
-    img {
-      width: $icon_width;
-      transform: rotateY(180deg);
-      margin-right: $m_xs;
-    }
-
-    &:hover {
-      div::before {
-        @include actionBtnHover();
-      }
-    }
-
-    div {
-      position: relative;
-      &::before {
-        @include actionBtnBefore();
-      }
-    }
-  }
-
-  .hamMenu {
+.home {
+  .container {
     position: relative;
-    right: 0;
-    width: 3rem;
+    display: flex;
+    margin: $m_md;
     height: 3rem;
-    background-color: var(--btn_background);
-    border-radius: 50%;
-    @include center();
-    z-index: 5;
-    cursor: pointer;
-    display: none;
+    justify-content: space-between;
+    @include breakpoint(m-max) {
+      margin: $m_sm;
+    }
 
-    &[data-open="true"] {
-      .hamburger {
+    .logo {
+      width: $logo_width;
+
+      @include breakpoint(m-max) {
+        width: 7rem;
+      }
+    }
+
+    .backWork {
+      @include center();
+      cursor: pointer;
+
+      img {
+        width: $icon_width;
+        transform: rotateY(180deg);
+        margin-right: $m_xs;
+      }
+
+      &:hover {
+        div::before {
+          @include actionBtnHover();
+        }
+      }
+
+      div {
+        position: relative;
+        &::before {
+          @include actionBtnBefore();
+        }
+      }
+    }
+
+    .hamWrapper {
+      position: relative;
+      width: 3rem;
+      height: 3rem;
+      display: none;
+
+      @include breakpoint(m-max) {
+        display: block;
+      }
+    }
+
+    .hamBackground,
+    .hamburger {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hamBackground {
+      background-color: var(--btn_background);
+      border-radius: 50%;
+      z-index: 3;
+      transition: all 0.7s ease;
+
+      &[data-open="true"] {
+        width: 220vw;
+        height: 220vw;
+        transition: all 0.7s ease;
+      }
+    }
+
+    .hamburger {
+      @include center();
+      flex-direction: column;
+      gap: $m_xxs;
+      z-index: 4;
+      cursor: pointer;
+      .humItem {
+        position: relative;
+        width: 1.4rem;
+        height: 2px;
+        background-color: white;
+        transform-origin: 50%;
+        transition: transform 0.5s ease;
+      }
+
+      &[data-open="true"] {
         position: absolute;
         top: 3rem;
         right: 5%;
@@ -77,66 +115,47 @@
         }
       }
     }
+  }
 
-    @include breakpoint(m-max) {
-      display: flex;
+  .menu {
+    position: absolute;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+    z-index: 4;
+
+    .openActions {
+      color: white;
+      font-size: x-large;
+      font-family: 600;
+      line-height: 4.5rem;
+      text-align: center;
+      margin-bottom: $m_xxl;
+
+      @include breakpoint(s-max) {
+        margin-bottom: $m_xl;
+        line-height: 4rem;
+      }
+
+      div {
+        cursor: pointer;
+        letter-spacing: 0.15rem;
+        opacity: 0;
+      }
     }
 
-    .hamburger {
-      position: absolute;
-
+    .icons {
       @include center();
-      flex-direction: column;
-      gap: $m_xxs;
-      .humItem {
-        position: relative;
-        width: 1.8rem;
-        height: 2px;
-        background-color: white;
-        transform-origin: 50%;
-        transition: transform 0.5s ease;
+      gap: $m_md;
+      margin-bottom: $m_sm;
 
-        @include breakpoint(s-max) {
-          width: 1.4rem;
-        }
-      }
-    }
-
-    .menu {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      .openActions {
-        color: white;
-        font-size: x-large;
-        font-family: 600;
-        line-height: 4.5rem;
-        text-align: center;
-        margin-bottom: $m_xxl;
-
-        @include breakpoint(s-max) {
-          margin-bottom: $m_xl;
-          line-height: 4rem;
-        }
-
-        div {
-          cursor: pointer;
-          letter-spacing: 0.15rem;
-        }
-      }
-
-      .icons {
-        @include center();
-        gap: $m_md;
-        margin-bottom: $m_sm;
-
-        img {
-          width: $icon_medium;
-          height: $icon_medium;
-        }
+      img {
+        width: $icon_medium;
+        height: $icon_medium;
+        opacity: 0;
       }
     }
   }
