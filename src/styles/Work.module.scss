@@ -15,6 +15,7 @@
   }
 
   .workItem {
+    display: none;
     position: relative;
     height: 43vh;
     overflow: hidden;
@@ -42,12 +43,12 @@
 
     &:hover {
       .image {
-        transform: scale(105%);
-        transition: transform 0.8s;
+        transform: scale(107%);
+        transition: transform 1.5s;
       }
       .overlay {
         opacity: 1;
-        transform: opacity 0.8s;
+        transform: opacity 1.5s;
       }
     }
 
@@ -59,13 +60,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.8s;
+      transition: transform 1.5s;
     }
 
     .overlay {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.4);
       opacity: 0;
-      transition: opacity 0.8s;
+      transition: opacity 1.5s;
     }
 
     .icons {

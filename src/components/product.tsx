@@ -16,7 +16,9 @@ export default function Product() {
   })
   return (
     <div className={styles.container}>
-      <img className={styles.productImg} src={productImgs[currentIndex]} alt="" />
+      <div className={styles.imgContainer}>
+        <img className={styles.productImg} src={productImgs[currentIndex]} alt="" />
+      </div>
       <div className={styles.imgPosContainer}>
         {productImgs.map((_: string, index: number) => (
           <div

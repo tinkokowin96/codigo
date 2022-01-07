@@ -16,11 +16,11 @@
       @content;
     }
   } @else if $size == l-min {
-    @media (min-width: 1200px) {
+    @media (min-width: 1400px) {
       @content;
     }
   } @else if $size == l-max {
-    @media (max-width: 1201px) {
+    @media (max-width: 1401px) {
       @content;
     }
   } @else if $size == xl-min {

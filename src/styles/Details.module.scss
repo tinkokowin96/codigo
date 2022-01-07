@@ -6,19 +6,20 @@
   font-size: 4.5rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
-  margin-left: $m_xl;
-  margin-top: $m_xxl;
 
-  @include breakpoint(s-max) {
-    margin-top: $m_xl;
-    margin-left: $m_md;
-    font-size: 3.3rem;
+  @include breakpoint(m-max) {
+    position: absolute;
+    top: 0;
+    font-size: 3rem;
   }
 }
 
 .container {
   @include center();
+  margin-top: $m_lg;
+  display: flex;
   position: relative;
+  overflow-x: hidden;
 
   @include breakpoint(m-max) {
     flex-direction: column-reverse;
@@ -35,7 +36,7 @@
     align-items: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 
-    @include breakpoint(s-max) {
+    @include breakpoint(m-max) {
       bottom: $m_lg;
     }
 
@@ -49,7 +50,7 @@
     img {
       margin-left: 3rem;
     }
-    @include breakpoint(s-max) {
+    @include breakpoint(m-max) {
       left: $m_md;
       @include center();
       img {
@@ -63,7 +64,7 @@
     img {
       margin-left: 1rem;
     }
-    @include breakpoint(s-max) {
+    @include breakpoint(m-max) {
       right: $m_md;
       @include center();
       img {
@@ -74,9 +75,8 @@
 
   .details {
     width: 40%;
-    margin: $m_lg 0;
-    margin-left: $m_xl;
-    @include breakpoint(s-max) {
+    margin-left: 6.5rem;
+    @include breakpoint(m-max) {
       width: 100%;
       margin-left: $m_md;
     }
@@ -112,7 +112,7 @@
     .featureContainer {
       display: flex;
 
-      @include breakpoint(s-max) {
+      @include breakpoint(m-max) {
         flex-direction: column;
         margin-bottom: $m_xxl;
       }
@@ -121,7 +121,7 @@
         font-weight: 600;
         letter-spacing: 0.1rem;
 
-        @include breakpoint(s-max) {
+        @include breakpoint(m-max) {
           margin-bottom: $m_sm;
         }
       }
@@ -138,7 +138,7 @@
           letter-spacing: 0.05rem;
           margin-bottom: $m_sm;
 
-          @include breakpoint(s-max) {
+          @include breakpoint(m-max) {
             margin-bottom: $m_xs;
           }
         }
@@ -150,27 +150,51 @@
   }
 
   .product {
+    margin-top: $m_md;
     width: 60%;
+    @include center();
 
-    @include breakpoint(s-max) {
+    @include breakpoint(m-max) {
       width: 100%;
       margin-top: $m_md;
     }
 
     .productContainer {
-      width: 100%;
-      aspect-ratio: 1/1;
       position: relative;
+      width: 36.15rem;
+      @include center();
+
+      @include breakpoint(l-max) {
+        width: 100%;
+      }
+
+      @include breakpoint(m-max) {
+        margin-top: $m_lg;
+        width: 36.15rem;
+      }
+
+      @include breakpoint(s-max) {
+        width: 25rem;
+      }
+
       .productBackground {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 80%;
+        width: 100%;
         aspect-ratio: 1/1;
         background-color: var(--product);
         border-radius: 50%;
         transform: translate(-50%, -50%);
         z-index: -1;
+
+        @include breakpoint(l-max) {
+          width: 80%;
+        }
+
+        @include breakpoint(m-max) {
+          width: 100%;
+        }
       }
     }
   }

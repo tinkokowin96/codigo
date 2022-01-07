@@ -49,16 +49,13 @@ export default function Details({
     <>
       <Navigation redirect={redirect} showFeatures={false} menu={menu} />
 
-      <div className={`detailItem ${styles.productName}`}>
-        OCBC Pay <br />
-        Anyone
-      </div>
       <div className={styles.container}>
         <div className={styles.leftSlide}>
           <img src="./icons/arrow-left-white.svg" alt="" />
         </div>
 
         <div className={styles.details}>
+          <div className={`detailItem ${styles.productName}`}>OCBC Pay Anyone</div>
           <div className={`detailItem ${styles.stores}`}>
             <div className={`${styles.appStore} ${styles.store}`}>
               <img src="./images/ico-app_store.png" alt="" />
