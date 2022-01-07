@@ -3,11 +3,10 @@
 
 .container {
   display: flex;
-  margin: $m_md $m_lg;
+  margin: $m_md;
+  min-height: 3rem;
   justify-content: space-between;
-  position: relative;
-
-  @include breakpoint(s-max) {
+  @include breakpoint(m-max) {
     margin: $m_sm;
   }
 
@@ -44,23 +43,18 @@
   }
 
   .hamMenu {
+    position: relative;
+    right: 0;
     width: 3rem;
     height: 3rem;
     background-color: var(--btn_background);
     border-radius: 50%;
     @include center();
-    transform-origin: top right;
     z-index: 5;
     cursor: pointer;
     display: none;
 
     &[data-open="true"] {
-      // position: absolute;
-      // border-radius: 0;
-      // top: 0;
-      // left: 0;
-      // transition: all 1s ease;
-
       .hamburger {
         position: absolute;
         top: 3rem;
@@ -89,6 +83,8 @@
     }
 
     .hamburger {
+      position: absolute;
+
       @include center();
       flex-direction: column;
       gap: $m_xxs;

@@ -4,7 +4,6 @@ import Footer from "./components/footer"
 import Header from "./components/header"
 import Navigation from "./components/navigation"
 import Work from "./components/work"
-import styles from "./styles/App.module.scss"
 
 function App() {
   const [redirect, setRedirect] = useState(false)
@@ -14,7 +13,7 @@ function App() {
   }
 
   return (
-    <div className={styles.App} data-open={openMenu && "true"}>
+    <div>
       <Navigation redirect={null} showFeatures menu={{ open: openMenu, set: setOpenMenu }} />
       <Header />
       <Work redirect={setRedirect} />

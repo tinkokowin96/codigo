@@ -14,30 +14,30 @@ interface iNavigation {
 export default function Navigation({ redirect, showFeatures, menu = null }: iNavigation) {
   const menuRef = useRef(null)
   const containerRef = useRef(null)
+  const hamburgerRef = useRef(null)
 
   const clickMenuHandler = () => {
+    const menuEle = menuRef.current as unknown as HTMLElement
     if (menu && !menu.open) {
+      menuEle.dataset.open = "true"
       menuOpenHandler()
     } else if (menu && menu.open) {
+      menuEle.dataset.open = "false"
+      menu?.set(false)
       menuCloseHandler()
     }
   }
 
   const menuOpenHandler = () => {
-    gsap.set(containerRef.current, {
-      margin: 0,
-    })
-
     gsap.set(menuRef.current, {
       borderRadius: 0,
-      position: "absolute",
+      position: "fixed",
       top: 0,
       right: 0,
       width: "100vw",
       height: "100vh",
-      clipPath: "circle(10% at 100% 0)",
+      clipPath: "circle(10% at 100% 0%)",
     })
-
     gsap.to(menuRef.current, {
       clipPath: "circle(120% at 100% 0)",
       duration: 0.7,
@@ -48,28 +48,13 @@ export default function Navigation({ redirect, showFeatures, menu = null }: iNav
   }
 
   const menuCloseHandler = () => {
-    const isPhone = window.innerWidth > 500 ? false : true
-
-    gsap.to(menuRef.current, {
-      position: "absolute",
-      clipPath: "circle(10% at 100% 0)",
-      duration: 0.5,
+    gsap.set(hamburgerRef.current, {
+      top: "2rem",
+      right: "1.76rem",
     })
-
-    gsap.set(menuRef.current, {
-      clipPath: "none",
-      position: "relative",
-      width: "3rem",
-      height: "3rem",
-      borderRadius: "50%",
-      delay: 0.5,
-      ease: "linear",
-      onComplete: () => {
-        gsap.set(containerRef.current, {
-          margin: isPhone ? "1.3rem" : "2rem 3.12rem",
-        })
-        menu?.set(false)
-      },
+    gsap.to(menuRef.current, {
+      clipPath: "circle(2.5% at 95.5% 4.5%)",
+      duration: 0.5,
     })
   }
 
@@ -85,8 +70,8 @@ export default function Navigation({ redirect, showFeatures, menu = null }: iNav
           <div>Back to work</div>
         </div>
       )}
-      <div className={styles.hamMenu} ref={menuRef} data-open={menu && menu.open && "true"}>
-        <div className={styles.hamburger} onClick={clickMenuHandler}>
+      <div className={styles.hamMenu} ref={menuRef} onClick={clickMenuHandler}>
+        <div className={styles.hamburger} ref={hamburgerRef}>
           <div className={styles.humItem}></div>
           <div className={styles.humItem}></div>
           <div className={styles.humItem}></div>
